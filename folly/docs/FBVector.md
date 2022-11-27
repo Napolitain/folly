@@ -57,15 +57,15 @@ this document) will allocate a chunk of memory next to its current chunk,
 copy its existing data to the new chunk, and then deallocate the old chunk.
 So now we have a chunk of size C followed by a chunk of size k * C. Continuing
 this process we'll then have a chunk of size k * k * C to the right and so on.
-That leads to a series of the form (using ^^ for power):
+That leads to a series of the form :
 
-    C, C*k,  C*k^^2, C*k^^3, ...
+$$ C, C \times k,  C \times k^2, C \times k^3, ... $$
 
 If we choose k = 2 we know that every element in the series will
 be strictly larger than the sum of all previous ones because of
 the remarkable equality:
 
-    1 + 2^^1 + 2^^2 + 2^^3... + 2^^n = 2^^(n+1) - 1
+$$ 1 + 2^1 + 2^2 + 2^3... + 2^n = 2^{n+1} - 1 $$
 
 This means that any new chunk requested will be larger
 than all previously used chunks combined, so the vector must
